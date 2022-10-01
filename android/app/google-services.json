@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "58671105343",
+    "project_id": "laundreazy-70822",
+    "storage_bucket": "laundreazy-70822.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58671105343:android:6ac93bf97dfdccab99ff8a",
+        "android_client_info": {
+          "package_name": "com.example.laundreazy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58671105343-asn2a07c1oeqkj17t6tscpf2eb0o9m1k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDt1JA4ln-RgjoJsskYvcZt5_AKcd0tGTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58671105343-asn2a07c1oeqkj17t6tscpf2eb0o9m1k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
