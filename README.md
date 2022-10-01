@@ -7,7 +7,7 @@ Laundreazy is a Laundry Managment application developed by our team to make your
 <img src="https://user-images.githubusercontent.com/82299544/193420139-eb139b30-84c8-49b8-a300-febd0bf3d9ee.jpg" alt="meme 1" style="width:300px; height:200px; align:center;">
 
 ## Team Members:
-- Ayush Gupta
+- <a href="https://github.com/ayushgml">Ayush Gupta</a>
 - Ansh Goel
 - Bhagyasree Biju
 - Suhasini Srivastava
