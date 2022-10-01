@@ -10,7 +10,7 @@ Laundreazy is a Laundry Managment application developed by our team to make your
 - <a href="https://github.com/ayushgml">Ayush Gupta</a>
 - <a href="https://github.com/bhagyasreeBiju">Bhagyasree Biju</a>
 - <a href="https://github.com/Diablo-bit">Ansh Goel</a>
-- <a href="">Suhasini Srivastava</a>
+- <a href="https://github.com/suhasinisrivastava">Suhasini Srivastava</a>
 
 ## Features:
 1) Drop Laundry/Drop Iron
@@ -29,7 +29,7 @@ Laundreazy is a Laundry Managment application developed by our team to make your
 ## Check out our app
 <div>
 <img float:left src="https://user-images.githubusercontent.com/82299544/193420253-9d02695f-63a7-4f59-8d14-adfc3f54191c.jpg" alt="meme 1" style="height:200px; width= 100px;">
-<img float:right src="https://user-images.githubusercontent.com/82299544/193420792-048a366e-fe45-4dd5-ba15-1403fe1173ab.jpg" style="height:200px; width= 100px;">
+<img float:right src="https://user-images.githubusercontent.com/82299544/193420792-048a366e-fe45-4dd5-ba15-1403fe1173ab.jpg" style="height:250px; width= 150px;">
 
 ## Getting Started
 
