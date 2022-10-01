@@ -356,8 +356,12 @@ class StudentLogin extends StatelessWidget {
                       controller: emailId,
                       validator: (value) => validateEmail(value!),
                       decoration: InputDecoration(
+                        
+                        filled: true,
+                        fillColor: Color(0xFF4DB6AC),
                         labelText: "Email ID",
-                        border: OutlineInputBorder(),
+                        border: new OutlineInputBorder(borderRadius: new BorderRadius.circular(15.0),borderSide: new BorderSide(width: 0, color: Color(0xFF4DB6AC)),),
+                        icon: new Icon(Icons.email,size:50,color:Colors.black)
                       ),
                       // focusNode: emailInputNode,
                       // autofocus: true,
@@ -372,9 +376,14 @@ class StudentLogin extends StatelessWidget {
                       controller: password,
                       validator: (value) => validateEmail(value!),
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0xFF4DB6AC),
+                        
                         labelText: "Password",
-                        border: OutlineInputBorder(),
+                        border: new OutlineInputBorder(borderRadius: new BorderRadius.circular(15.0),),
+                        icon: new Icon(Icons.visibility,size:50,color:Colors.black),
                       ),
+                      
                       // focusNode: passwordInputNode,
                       // autofocus: true,
                     ),
