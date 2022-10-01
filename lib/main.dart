@@ -1723,7 +1723,7 @@ class _LaundryDropState extends State<LaundryDrop> {
                       ),
                       SizedBox(
                         height: 30,
-                                      ),
+                                          ),
                     ],
                   )
                 ),
