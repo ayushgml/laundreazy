@@ -1716,14 +1716,42 @@ class _LaundryDropState extends State<LaundryDrop> {
                 Container(
                   child: Row(
                     children: [
-                      Icon(
-                        Icons.remove,
-                        size: 35,
-                        color: Color.fromARGB(255, 0, 0, 0),
+                      GestureDetector(
+                        onTap: () {
+                          _decrementShirt();
+                        },
+                        child: Icon(
+                          Icons.remove,
+                          size: 35,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
                       ),
-                      SizedBox(
-                        height: 30,
-                                          ),
+                      SizedBox(width:10),
+                      Text(
+                        "$_counterShirt",
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'Reem Kufi Fun',
+                          fontSize: 20,
+                          letterSpacing:
+                              1 /*percentages not used in flutter. defaulting to zero*/,
+                          fontWeight: FontWeight.bold,
+                          height: 1,
+                        ),
+                      ),
+                      SizedBox(width:10),
+                      GestureDetector(
+                        onTap: () {
+                          _incrementShirt();
+                        },
+                        child: Icon(
+                          Icons.add,
+                          size: 35,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      
                     ],
                   )
                 ),
