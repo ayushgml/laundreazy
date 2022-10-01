@@ -30,7 +30,7 @@ Laundreazy is a Laundry Managment application developed by our team to make your
 <div>
 <img float:left src="https://user-images.githubusercontent.com/82299544/193420253-9d02695f-63a7-4f59-8d14-adfc3f54191c.jpg" alt="meme 1" style="height:200px; width= 100px;">
 <img float:right src="https://user-images.githubusercontent.com/82299544/193420792-048a366e-fe45-4dd5-ba15-1403fe1173ab.jpg" style="height:250px; width= 150px;">
-<img float:right src="https://user-images.githubusercontent.com/82299544/193421885-b34ff503-8b2a-42ab-8955-a0ef124b6728.jpg" style="height:250px; width= 150px;">
+<img float:right src="https://user-images.githubusercontent.com/82299544/193421885-b34ff503-8b2a-42ab-8955-a0ef124b6728.jpg" style="height:200px; width= 100px;">
 ## Getting Started
 
 This project is a starting point for a Flutter application.
