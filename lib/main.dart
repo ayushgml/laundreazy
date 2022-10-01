@@ -1,8 +1,10 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, library_private_types_in_public_api
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -225,6 +227,7 @@ class UserDirection extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ManagerLogin extends StatelessWidget {
   ManagerLogin({super.key});
 
@@ -550,7 +553,8 @@ class ManagerSignUpPage extends StatelessWidget {
                           border: new OutlineInputBorder(
                             borderRadius: new BorderRadius.circular(15.0),
                             borderSide: new BorderSide(
-                                width: 0, color: Color.fromRGBO(247, 236, 222, 1)),
+                                width: 0,
+                                color: Color.fromRGBO(247, 236, 222, 1)),
                           ),
                           icon: new Icon(Icons.person,
                               size: 50, color: Colors.black)),
@@ -573,7 +577,8 @@ class ManagerSignUpPage extends StatelessWidget {
                           border: new OutlineInputBorder(
                             borderRadius: new BorderRadius.circular(15.0),
                             borderSide: new BorderSide(
-                                width: 0, color: Color.fromRGBO(247, 236, 222, 1)),
+                                width: 0,
+                                color: Color.fromRGBO(247, 236, 222, 1)),
                           ),
                           icon: new Icon(Icons.email,
                               size: 50, color: Colors.black)),
@@ -596,8 +601,8 @@ class ManagerSignUpPage extends StatelessWidget {
                         border: new OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(15.0),
                         ),
-                        icon:
-                            new Icon(Icons.lock, size: 50, color: Color.fromRGBO(247, 236, 222, 1)),
+                        icon: new Icon(Icons.lock,
+                            size: 50, color: Color.fromRGBO(247, 236, 222, 1)),
                       ),
                       // focusNode: passwordInputNode,
                       // autofocus: true,
@@ -702,6 +707,7 @@ class ManagerSignUpPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class StudentLogin extends StatelessWidget {
   StudentLogin({super.key});
 
@@ -802,7 +808,7 @@ class StudentLogin extends StatelessWidget {
                       validator: (value) => validateEmail(value!),
                       decoration: InputDecoration(
                           filled: true,
-                          fillColor: Color(0xFF4DB6AC),
+                          fillColor: Color.fromARGB(255, 231, 212, 158),
                           labelText: "Email ID",
                           border: new OutlineInputBorder(
                             borderRadius: new BorderRadius.circular(15.0),
@@ -924,6 +930,7 @@ List<DropdownMenuItem<String>> get dropdownItems {
   return menuItems;
 }
 
+// ignore: use_key_in_widget_constructors, must_be_immutable
 class StudentSignUpPage extends StatelessWidget {
   FocusNode emailInputNode = FocusNode();
   FocusNode passwordInputNode = FocusNode();
@@ -1188,7 +1195,7 @@ class StudentSignUpPage extends StatelessWidget {
 }
 
 class StudentHomePage extends StatefulWidget {
-  const StudentHomePage({Key? key}) : super(key: key);
+  const StudentHomePage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -1199,8 +1206,534 @@ class _StudentHomePageState extends State<StudentHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(84, 186, 185, 1),
+        body: Container(
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/image/content_bg.png'),
+                fit: BoxFit.fill,
+              ),
+            ),
+            child: new GridView.count(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 140, horizontal: 30),
+                crossAxisCount: 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF54BAB9),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
+                        bottomRight: Radius.circular(15),
+                      ),
+                    ),
+                    child: GestureDetector(
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => LaundryDrop())),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: const [
+                            Icon(
+                              Icons.local_laundry_service,
+                              size: 70,
+                            ),
+                            Text(
+                              'LAUNDRY DROP',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                decoration: TextDecoration.none,
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Reem Kufi Fun',
+                                fontSize: 17,
+                                letterSpacing:
+                                    1 /*percentages not used in flutter. defaulting to zero*/,
+                                fontWeight: FontWeight.bold,
+                                height: 1,
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF9ED2C6),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
+                        bottomRight: Radius.circular(15),
+                      ),
+                    ),
+                    child: GestureDetector(
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => ManagerLogin())),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: const [
+                            Icon(
+                              Icons.iron,
+                              size: 60,
+                            ),
+                            Text(
+                              'IRON DROP',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                decoration: TextDecoration.none,
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Reem Kufi Fun',
+                                fontSize: 17,
+                                letterSpacing:
+                                    1 /*percentages not used in flutter. defaulting to zero*/,
+                                fontWeight: FontWeight.bold,
+                                height: 1,
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF9ED2C6),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
+                        bottomRight: Radius.circular(15),
+                      ),
+                    ),
+                    child: GestureDetector(
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => ManagerLogin())),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: const [
+                            Icon(
+                              Icons.local_laundry_service,
+                              size: 60,
+                            ),
+                            Text(
+                              'LAUNDRY COLLECT',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                decoration: TextDecoration.none,
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Reem Kufi Fun',
+                                fontSize: 17,
+                                letterSpacing:
+                                    1 /*percentages not used in flutter. defaulting to zero*/,
+                                fontWeight: FontWeight.bold,
+                                height: 1,
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF54BAB9),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
+                        bottomRight: Radius.circular(15),
+                      ),
+                    ),
+                    child: GestureDetector(
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => ManagerLogin())),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: const [
+                            Icon(
+                              Icons.iron,
+                              size: 60,
+                            ),
+                            Text(
+                              'IRON COLLECT',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                decoration: TextDecoration.none,
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Reem Kufi Fun',
+                                fontSize: 17,
+                                letterSpacing:
+                                    1 /*percentages not used in flutter. defaulting to zero*/,
+                                fontWeight: FontWeight.bold,
+                                height: 1,
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
+                ])));
+  }
+}
+
+class LaundryDrop extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
+  LaundryDrop({super.key});
+
+  @override
+  _LaundryDropState createState() => _LaundryDropState();
+}
+
+class _LaundryDropState extends State<LaundryDrop> {
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
+  TextEditingController tokenNo = TextEditingController();
+
+  int _counterShirt = 0;
+  int _counterJeans = 0;
+  int _counterUGS = 0;
+  int _counterTowels = 0;
+  int _counterOthers = 0;
+  int _totalClothes = 0;
+
+  void _incrementShirt() {
+    setState(() {
+      _counterShirt++;
+      _totalClothes++;
+    });
+  }
+
+  void _incrementJeans() {
+    setState(() {
+      _counterJeans++;
+      _totalClothes++;
+    });
+  }
+
+  void _incrementUGS() {
+    setState(() {
+      _counterUGS++;
+      _totalClothes++;
+    });
+  }
+
+  void _incrementTowels() {
+    setState(() {
+      _counterTowels++;
+      _totalClothes++;
+    });
+  }
+
+  void _incrementOthers() {
+    setState(() {
+      _counterOthers++;
+      _totalClothes++;
+    });
+  }
+
+  void _decrementShirt() {
+    setState(() {
+      _counterShirt--;
+      _totalClothes--;
+    });
+  }
+
+  void _decrementJeans() {
+    setState(() {
+      _counterJeans--;
+      _totalClothes--;
+    });
+  }
+
+  void _decrementUGS() {
+    setState(() {
+      _counterUGS--;
+      _totalClothes--;
+    });
+  }
+
+  void _decrementTowels() {
+    setState(() {
+      _counterTowels--;
+      _totalClothes--;
+    });
+  }
+
+  void _decrementOthers() {
+    setState(() {
+      _counterOthers--;
+      _totalClothes--;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(32),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/image/content_bg.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'DROP',
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Color.fromRGBO(0, 0, 0, 1),
+                    fontFamily: 'Reem Kufi Fun',
+                    fontSize: 30,
+                    letterSpacing:
+                        1 /*percentages not used in flutter. defaulting to zero*/,
+                    fontWeight: FontWeight.bold,
+                    height: 1,
+                  ),
+                ),
+                Text(
+                  ' LAUNDRY',
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Color(0xFF54BAB9),
+                    fontFamily: 'Reem Kufi Fun',
+                    fontSize: 30,
+                    letterSpacing:
+                        1 /*percentages not used in flutter. defaulting to zero*/,
+                    fontWeight: FontWeight.bold,
+                    height: 1,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'DATE: ',
+                          style: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            fontFamily: 'Reem Kufi Fun',
+                            fontSize: 15,
+                            letterSpacing:
+                                1 /*percentages not used in flutter. defaulting to zero*/,
+                            fontWeight: FontWeight.bold,
+                            height: 1,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 80,
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            _selectDate(context);
+                          },
+                          child: Container(
+                            width: 55,
+                            height: 55,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF54BAB9),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15),
+                                topRight: Radius.circular(15),
+                                bottomLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15),
+                              ),
+                            ),
+                            child: Icon(
+                              Icons.calendar_today,
+                              size: 35,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("${selectedDate.toLocal()}".split(' ')[0]),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 90,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'TOKEN NO: ',
+                          style: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            fontFamily: 'Reem Kufi Fun',
+                            fontSize: 15,
+                            letterSpacing:
+                                1 /*percentages not used in flutter. defaulting to zero*/,
+                            fontWeight: FontWeight.bold,
+                            height: 1,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 30,
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      height: 60,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Color(0xFF9ED2C6)),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15),
+                          bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(15),
+                        ),
+                      ),
+                      child: TextFormField(
+                        controller: tokenNo,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Color.fromARGB(255, 178, 178, 178),
+                            fontFamily: 'Reem Kufi Fun',
+                            fontSize: 15,
+                            letterSpacing:
+                                1 /*percentages not used in flutter. defaulting to zero*/,
+                            fontWeight: FontWeight.bold,
+                            height: 1,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            SizedBox(height: 30),
+            Row(
+              children: [
+                Text(
+                  'CLOTHES COUNT:',
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Color(0xFF54BAB9),
+                    fontFamily: 'Reem Kufi Fun',
+                    fontSize: 25,
+                    letterSpacing:
+                        1 /*percentages not used in flutter. defaulting to zero*/,
+                    fontWeight: FontWeight.bold,
+                    height: 1,
+                  ),
+                ),
+                SizedBox(
+                  width: 60,
+                ),
+                Container(
+                    child: Text(
+                  "$_totalClothes",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Color(0xFF54BAB9),
+                    fontFamily: 'Reem Kufi Fun',
+                    fontSize: 25,
+                    letterSpacing:
+                        1 /*percentages not used in flutter. defaulting to zero*/,
+                    fontWeight: FontWeight.bold,
+                    height: 1,
+                  ),
+                )),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("SHIRT / T-SHIRTS: ",
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontFamily: 'Reem Kufi Fun',
+                      fontSize: 20,
+                      letterSpacing:
+                          1 /*percentages not used in flutter. defaulting to zero*/,
+                      fontWeight: FontWeight.bold,
+                      height: 1,
+                    )
+                ),
+                Container(
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.remove,
+                        size: 35,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                      SizedBox(
+                        height: 30,
+                                      ),
+                    ],
+                  )
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+          ],
+        ),
       ),
     );
   }
