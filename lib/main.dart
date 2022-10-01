@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -276,32 +279,32 @@ class StudentLogin extends StatelessWidget {
   FocusNode emailInputNode = FocusNode();
   FocusNode passwordInputNode = FocusNode();
 
-    String? validateEmail(String value) {
-      String pattern =
+  String? validateEmail(String value) {
+    String pattern =
         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
         r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
         r"{0,253}[a-zA-Z0-9])?)*$";
-      RegExp regex = RegExp(pattern);
-      if (!regex.hasMatch(value) || value == null) {
-        return 'Enter a valid email address';
-      } else {
-        return null;
-      }
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value) || value == null) {
+      return 'Enter a valid email address';
+    } else {
+      return null;
     }
+  }
 
-    // ignore: unused_element
-    String? validatePassword(String value) {
-      String pattern = r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
-      RegExp regex = RegExp(pattern);
-      if (!regex.hasMatch(value) || value == null) {
-        return 'Enter a valid password';
-      } else {
-        return null;
-      }
-    } 
+  // ignore: unused_element
+  String? validatePassword(String value) {
+    String pattern = r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value) || value == null) {
+      return 'Enter a valid password';
+    } else {
+      return null;
+    }
+  }
 
-    TextEditingController emailId = TextEditingController();
-    TextEditingController password = TextEditingController();
+  TextEditingController emailId = TextEditingController();
+  TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -400,7 +403,7 @@ class StudentLogin extends StatelessWidget {
                         child: GestureDetector(
                           onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
-                                  builder: (context) => StudentLogin())),
+                                  builder: (context) => StudentHomePage())),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const [
@@ -429,6 +432,29 @@ class StudentLogin extends StatelessWidget {
         );
   }
 }
+
+class StudentHomePage extends StatefulWidget {
+  const StudentHomePage({Key? key}) : super(key: key);
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _StudentHomePageState createState() => _StudentHomePageState();
+  
+}
+
+class _StudentHomePageState extends State<StudentHomePage> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(84, 186, 185, 1),
+      ),
+    );
+  }
+}
+
+
 
 // class Drawhorizontalline extends CustomPainter {
 //   Paint _paint;
