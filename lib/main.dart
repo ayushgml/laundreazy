@@ -430,9 +430,31 @@ class StudentLogin extends StatelessWidget {
                             ],
                           ),
                         ),
-                      ),
+                        
+                        )
                     ],
-                  ),
+                        
+                      ),
+                      GestureDetector(
+                          onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => StudentLogin())),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: const [
+                              Text('New user? sign up here', textAlign: TextAlign.left, style: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Reem Kufi Fun',
+                                fontSize: 16,
+                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                fontWeight: FontWeight.normal,
+                                height: 1
+                            ),
+                            ),
+                          ],
+                          ),
+                      ),
+                  
                 ]))
         // ]
         );
