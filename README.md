@@ -26,17 +26,10 @@ Laundreazy is a Laundry Managment application developed by our team to make your
 - Firebase
 
 ## Check out our app
-<img src="https://user-images.githubusercontent.com/82299544/193420253-9d02695f-63a7-4f59-8d14-adfc3f54191c.jpg" alt="meme 1">
+<img src="https://user-images.githubusercontent.com/82299544/193420253-9d02695f-63a7-4f59-8d14-adfc3f54191c.jpg" alt="meme 1" style="height:200px; width= 100px;">
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
