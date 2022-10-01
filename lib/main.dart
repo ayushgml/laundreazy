@@ -1490,7 +1490,7 @@ class _LaundryDropState extends State<LaundryDrop> {
       body: Container(
         width: double.infinity,
         alignment: Alignment.center,
-        padding: const EdgeInsets.all(32),
+        padding: const EdgeInsets.all(30),
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/image/content_bg.png'),
@@ -1498,7 +1498,7 @@ class _LaundryDropState extends State<LaundryDrop> {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1758,8 +1758,336 @@ class _LaundryDropState extends State<LaundryDrop> {
               ],
             ),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
+            Divider(
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+              color: Color.fromARGB(255, 124, 124, 124),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("JEANS / TROUSERS: ",
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontFamily: 'Reem Kufi Fun',
+                      fontSize: 20,
+                      letterSpacing:
+                          1 /*percentages not used in flutter. defaulting to zero*/,
+                      fontWeight: FontWeight.bold,
+                      height: 1,
+                    )
+                ),
+                Container(
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          _decrementJeans();
+                        },
+                        child: Icon(
+                          Icons.remove,
+                          size: 35,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      SizedBox(width:10),
+                      Text(
+                        "$_counterJeans",
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'Reem Kufi Fun',
+                          fontSize: 20,
+                          letterSpacing:
+                              1 /*percentages not used in flutter. defaulting to zero*/,
+                          fontWeight: FontWeight.bold,
+                          height: 1,
+                        ),
+                      ),
+                      SizedBox(width:10),
+                      GestureDetector(
+                        onTap: () {
+                          _incrementJeans();
+                        },
+                        child: Icon(
+                          Icons.add,
+                          size: 35,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      
+                    ],
+                  )
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+              color: Color.fromARGB(255, 124, 124, 124),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("UNDERGARMENTS: ",
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontFamily: 'Reem Kufi Fun',
+                      fontSize: 20,
+                      letterSpacing:
+                          1 /*percentages not used in flutter. defaulting to zero*/,
+                      fontWeight: FontWeight.bold,
+                      height: 1,
+                    )
+                ),
+                Container(
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          _decrementUGS();
+                        },
+                        child: Icon(
+                          Icons.remove,
+                          size: 35,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      SizedBox(width:10),
+                      Text(
+                        "$_counterUGS",
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'Reem Kufi Fun',
+                          fontSize: 20,
+                          letterSpacing:
+                              1 /*percentages not used in flutter. defaulting to zero*/,
+                          fontWeight: FontWeight.bold,
+                          height: 1,
+                        ),
+                      ),
+                      SizedBox(width:10),
+                      GestureDetector(
+                        onTap: () {
+                          _incrementUGS();
+                        },
+                        child: Icon(
+                          Icons.add,
+                          size: 35,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      
+                    ],
+                  )
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+              color: Color.fromARGB(255, 124, 124, 124),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("TOWELS: ",
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontFamily: 'Reem Kufi Fun',
+                      fontSize: 20,
+                      letterSpacing:
+                          1 /*percentages not used in flutter. defaulting to zero*/,
+                      fontWeight: FontWeight.bold,
+                      height: 1,
+                    )
+                ),
+                Container(
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          _decrementTowels();
+                        },
+                        child: Icon(
+                          Icons.remove,
+                          size: 35,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      SizedBox(width:10),
+                      Text(
+                        "$_counterTowels",
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'Reem Kufi Fun',
+                          fontSize: 20,
+                          letterSpacing:
+                              1 /*percentages not used in flutter. defaulting to zero*/,
+                          fontWeight: FontWeight.bold,
+                          height: 1,
+                        ),
+                      ),
+                      SizedBox(width:10),
+                      GestureDetector(
+                        onTap: () {
+                          _incrementTowels();
+                        },
+                        child: Icon(
+                          Icons.add,
+                          size: 35,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      
+                    ],
+                  )
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+              color: Color.fromARGB(255, 124, 124, 124),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("OTHERS: ",
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontFamily: 'Reem Kufi Fun',
+                      fontSize: 20,
+                      letterSpacing:
+                          1 /*percentages not used in flutter. defaulting to zero*/,
+                      fontWeight: FontWeight.bold,
+                      height: 1,
+                    )
+                ),
+                Container(
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          _decrementOthers();
+                        },
+                        child: Icon(
+                          Icons.remove,
+                          size: 35,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      SizedBox(width:10),
+                      Text(
+                        "$_counterOthers",
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'Reem Kufi Fun',
+                          fontSize: 20,
+                          letterSpacing:
+                              1 /*percentages not used in flutter. defaulting to zero*/,
+                          fontWeight: FontWeight.bold,
+                          height: 1,
+                        ),
+                      ),
+                      SizedBox(width:10),
+                      GestureDetector(
+                        onTap: () {
+                          _incrementOthers();
+                        },
+                        child: Icon(
+                          Icons.add,
+                          size: 35,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      
+                    ],
+                  )
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 50,
+              width: 150,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                ),
+                color: Color(0xFF54BAB9),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(width: 20),
+                  Text("DROP",
+                      style: TextStyle(
+                        decoration: TextDecoration.none,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontFamily: 'Reem Kufi Fun',
+                        fontSize: 20,
+                        letterSpacing:
+                            1 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.bold,
+                        height: 1,
+                      )
+                  ),
+                  SizedBox(width: 20),
+                  GestureDetector(
+                    onTap: () {
+                      
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => StudentHomePage()),
+                      );
+                    },
+                    child: Icon(Icons.arrow_circle_right_rounded,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        size:30
+                        ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
