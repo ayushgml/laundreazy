@@ -3,7 +3,8 @@
 
 ## Want to Know more? We've got you!
 Laundreazy is a Laundry Managment application developed by our team to make your life as a hosteller much much easier! Woohoo! As you would've already guessed it helps with your day to day laundry management issues including missing laundry, pickup/collection dates and even gentle reminders that help you manage time! There's also an additional interesting feature that can be used when giving your clothes for ironing. This is the app every VITian has been waiting for.
-<img src="https://user-images.githubusercontent.com/82299544/193420139-eb139b30-84c8-49b8-a300-febd0bf3d9ee.jpg" alt="meme 1" style="width:100px; height:200px; align:center;">
+
+<img src="https://user-images.githubusercontent.com/82299544/193420139-eb139b30-84c8-49b8-a300-febd0bf3d9ee.jpg" alt="meme 1" style="width:300px; height:200px; align:center;">
 
 ## Team Members:
 - Ayush Gupta
