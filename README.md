@@ -8,9 +8,9 @@ Laundreazy is a Laundry Managment application developed by our team to make your
 
 ## Team Members:
 - <a href="https://github.com/ayushgml">Ayush Gupta</a>
-- Ansh Goel
-- Bhagyasree Biju
-- Suhasini Srivastava
+- <a href="https://github.com/bhagyasreeBiju">Bhagyasree Biju</a>
+- <a href="https://github.com/Diablo-bit">Ansh Goel</a>
+- <a href="">Suhasini Srivastava</a>
 
 ## Features:
 1) Drop Laundry/Drop Iron
