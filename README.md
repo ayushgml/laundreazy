@@ -1,8 +1,12 @@
-#<p style="color:blue;"> Laundreazy: Getting Dhobi, the right way.</p>
+# Laundreazy: Getting Dhobi, the right way.
 <img src="https://user-images.githubusercontent.com/82299544/193416743-c7506438-9853-4418-bdc0-58e4dead9f67.gif" alt="my banner">
 
-A new Flutter project.
 
+## Team Members:
+- Ayush Gupta
+- Ansh Goel
+- Bhagyasree Biju
+- Suhasini Srivastava
 ## Getting Started
 
 This project is a starting point for a Flutter application.
