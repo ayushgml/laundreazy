@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -306,6 +307,14 @@ class StudentLogin extends StatelessWidget {
   TextEditingController emailId = TextEditingController();
   TextEditingController password = TextEditingController();
 
+  void LoginWithFirebase(context){
+    FirebaseAuth.instance.signInWithEmailAndPassword(email: emailId.text, password: password.text).then((value) => {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => StudentHomePage()))
+    }).catchError((e){
+      print(e);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     void openKeyboard() {
@@ -359,8 +368,11 @@ class StudentLogin extends StatelessWidget {
                       controller: emailId,
                       validator: (value) => validateEmail(value!),
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0xFF4DB6AC),
                         labelText: "Email ID",
-                        border: OutlineInputBorder(),
+                        border: new OutlineInputBorder(borderRadius: new BorderRadius.circular(15.0),borderSide: new BorderSide(width: 0, color: Color(0xFF4DB6AC)),),
+                        icon: new Icon(Icons.email,size:50,color:Colors.black)
                       ),
                       // focusNode: emailInputNode,
                       // autofocus: true,
@@ -375,8 +387,12 @@ class StudentLogin extends StatelessWidget {
                       controller: password,
                       validator: (value) => validateEmail(value!),
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0xFF4DB6AC),
+                        
                         labelText: "Password",
-                        border: OutlineInputBorder(),
+                        border: new OutlineInputBorder(borderRadius: new BorderRadius.circular(15.0),),
+                        icon: new Icon(Icons.visibility,size:50,color:Colors.black),
                       ),
                       // focusNode: passwordInputNode,
                       // autofocus: true,
@@ -401,9 +417,10 @@ class StudentLogin extends StatelessWidget {
                           color: Color.fromARGB(255, 0, 0, 0),
                         ),
                         child: GestureDetector(
-                          onTap: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => StudentHomePage())),
+                          onTap: () => LoginWithFirebase(context),
+                          // Navigator.of(context).push(
+                          //     MaterialPageRoute(
+                          //         builder: (context) => StudentHomePage())),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const [
@@ -424,6 +441,25 @@ class StudentLogin extends StatelessWidget {
                             ],
                           ),
                         ),
+                      ),
+                      GestureDetector(
+                          onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => StudentLogin())),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: const [
+                              Text('New user? sign up here', textAlign: TextAlign.left, style: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Reem Kufi Fun',
+                                fontSize: 16,
+                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                fontWeight: FontWeight.normal,
+                                height: 1
+                            ),
+                            ),
+                          ],
+                          ),
                       ),
                     ],
                   ),
