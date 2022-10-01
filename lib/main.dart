@@ -307,10 +307,15 @@ class StudentLogin extends StatelessWidget {
   TextEditingController emailId = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  void LoginWithFirebase(context){
-    FirebaseAuth.instance.signInWithEmailAndPassword(email: emailId.text, password: password.text).then((value) => {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => StudentHomePage()))
-    }).catchError((e){
+  void LoginWithFirebase(context) {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+            email: emailId.text, password: password.text)
+        .then((value) => {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => StudentHomePage()))
+            })
+        .catchError((e) {
       print(e);
     });
   }
@@ -368,12 +373,16 @@ class StudentLogin extends StatelessWidget {
                       controller: emailId,
                       validator: (value) => validateEmail(value!),
                       decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xFF4DB6AC),
-                        labelText: "Email ID",
-                        border: new OutlineInputBorder(borderRadius: new BorderRadius.circular(15.0),borderSide: new BorderSide(width: 0, color: Color(0xFF4DB6AC)),),
-                        icon: new Icon(Icons.email,size:50,color:Colors.black)
-                      ),
+                          filled: true,
+                          fillColor: Color(0xFF4DB6AC),
+                          labelText: "Email ID",
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(15.0),
+                            borderSide: new BorderSide(
+                                width: 0, color: Color(0xFF4DB6AC)),
+                          ),
+                          icon: new Icon(Icons.email,
+                              size: 50, color: Colors.black)),
                       // focusNode: emailInputNode,
                       // autofocus: true,
                     ),
@@ -385,14 +394,16 @@ class StudentLogin extends StatelessWidget {
                     autovalidateMode: AutovalidateMode.always,
                     child: TextFormField(
                       controller: password,
-                      validator: (value) => validateEmail(value!),
+                      validator: (value) => validatePassword(value!),
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Color(0xFF4DB6AC),
-                        
                         labelText: "Password",
-                        border: new OutlineInputBorder(borderRadius: new BorderRadius.circular(15.0),),
-                        icon: new Icon(Icons.visibility,size:50,color:Colors.black),
+                        border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(15.0),
+                        ),
+                        icon:
+                            new Icon(Icons.lock, size: 50, color: Colors.black),
                       ),
                       // focusNode: passwordInputNode,
                       // autofocus: true,
@@ -442,24 +453,303 @@ class StudentLogin extends StatelessWidget {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       GestureDetector(
-                          onTap: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => StudentLogin())),
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => StudentSignUpPage())),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: const [
+                            Text(
+                              'New user? sign up here',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(0, 0, 0, 1),
+                                  fontFamily: 'Reem Kufi Fun',
+                                  fontSize: 16,
+                                  letterSpacing:
+                                      0 /*percentages not used in flutter. defaulting to zero*/,
+                                  fontWeight: FontWeight.normal,
+                                  height: 1),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ]))
+        // ]
+        );
+  }
+}
+
+List<DropdownMenuItem<String>> get dropdownItems {
+  List<DropdownMenuItem<String>> menuItems = [
+    DropdownMenuItem(child: Text("L block Mens"), value: "L block Mens"),
+    DropdownMenuItem(child: Text("D block Ladies"), value: "D block Ladies"),
+    DropdownMenuItem(child: Text("R block Mens"), value: "R block Mens"),
+    DropdownMenuItem(child: Text("Q block Mens"), value: "Q block Mens"),
+  ];
+  return menuItems;
+}
+
+class StudentSignUpPage extends StatelessWidget {
+  FocusNode emailInputNode = FocusNode();
+  FocusNode passwordInputNode = FocusNode();
+
+  String? validateName(String value) {
+    if (value == null) {
+      return 'Please enter your name!';
+    } else {
+      return null;
+    }
+  }
+
+  String? validateEmail(String value) {
+    String pattern =
+        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?)*$";
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value) || value == null) {
+      return 'Enter a valid email address';
+    } else {
+      return null;
+    }
+  }
+
+  // ignore: unused_element
+  String? validatePassword(String value) {
+    String pattern = r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value) || value == null) {
+      return 'Enter a valid password';
+    } else {
+      return null;
+    }
+  }
+
+  TextEditingController emailId = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController fullName = TextEditingController();
+  TextEditingController rePassword = TextEditingController();
+
+  void SignUpWithFirebase(context) {
+    if (password.text == rePassword.text) {
+      FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailId.text, password: password.text);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => StudentLogin()));
+    } else {
+      return;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    void openKeyboard() {
+      FocusScope.of(context).requestFocus(emailInputNode);
+    }
+
+    return Scaffold(
+        body: Container(
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/image/student_bg.png'),
+                fit: BoxFit.fill,
+              ),
+            ),
+            padding: const EdgeInsets.all(20),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    'STUDENT',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromRGBO(0, 0, 0, 1),
+                        fontFamily: 'Reem Kufi Fun',
+                        fontSize: 22,
+                        letterSpacing:
+                            0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.bold,
+                        height: 1),
+                  ),
+                  Text(
+                    'SIGN UP',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromRGBO(0, 0, 0, 1),
+                        fontFamily: 'Reem Kufi Fun',
+                        fontSize: 36,
+                        letterSpacing:
+                            0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.bold,
+                        height: 1),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Form(
+                    autovalidateMode: AutovalidateMode.always,
+                    child: TextFormField(
+                      controller: fullName,
+                      validator: (value) => validateName(value!),
+                      decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFF4DB6AC),
+                          labelText: "Full Name",
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(15.0),
+                            borderSide: new BorderSide(
+                                width: 0, color: Color(0xFF4DB6AC)),
+                          ),
+                          icon: new Icon(Icons.person,
+                              size: 50, color: Colors.black)),
+                      // focusNode: emailInputNode,
+                      // autofocus: true,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Form(
+                    autovalidateMode: AutovalidateMode.always,
+                    child: TextFormField(
+                      controller: emailId,
+                      validator: (value) => validateEmail(value!),
+                      decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFF4DB6AC),
+                          labelText: "Email ID",
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(15.0),
+                            borderSide: new BorderSide(
+                                width: 0, color: Color(0xFF4DB6AC)),
+                          ),
+                          icon: new Icon(Icons.email,
+                              size: 50, color: Colors.black)),
+                      // focusNode: emailInputNode,
+                      // autofocus: true,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Form(
+                    autovalidateMode: AutovalidateMode.always,
+                    child: TextFormField(
+                      controller: password,
+                      validator: (value) => validatePassword(value!),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0xFF4DB6AC),
+                        labelText: "Password",
+                        border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(15.0),
+                        ),
+                        icon:
+                            new Icon(Icons.lock, size: 50, color: Colors.black),
+                      ),
+                      // focusNode: passwordInputNode,
+                      // autofocus: true,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Form(
+                    autovalidateMode: AutovalidateMode.always,
+                    child: TextFormField(
+                      controller: rePassword,
+                      validator: (value) => validatePassword(value!),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0xFF4DB6AC),
+                        labelText: "re-enter Password",
+                        border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(15.0),
+                        ),
+                        icon: new Icon(Icons.lock_open,
+                            size: 50, color: Colors.black),
+                      ),
+                      // focusNode: passwordInputNode,
+                      // autofocus: true,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ButtonBar(
+                    alignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: 335,
+                        height: 66,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(12),
+                            topRight: Radius.circular(12),
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12),
+                          ),
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        child: GestureDetector(
+                          onTap: () => SignUpWithFirebase(context),
+                          // Navigator.of(context).push(
+                          //     MaterialPageRoute(
+                          //         builder: (context) => StudentHomePage())),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const [
-                              Text('New user? sign up here', textAlign: TextAlign.left, style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 1),
-                                fontFamily: 'Reem Kufi Fun',
-                                fontSize: 16,
-                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                fontWeight: FontWeight.normal,
-                                height: 1
-                            ),
+                              Text(
+                                'SIGN UP',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  color: Color.fromRGBO(247, 236, 222, 1),
+                                  fontFamily: 'Reem Kufi Fun',
+                                  fontSize: 19,
+                                  letterSpacing:
+                                      1 /*percentages not used in flutter. defaulting to zero*/,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => StudentLogin())),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: const [
+                            Text(
+                              'Already a user? sign in here',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(0, 0, 0, 1),
+                                  fontFamily: 'Reem Kufi Fun',
+                                  fontSize: 16,
+                                  letterSpacing:
+                                      0 /*percentages not used in flutter. defaulting to zero*/,
+                                  fontWeight: FontWeight.normal,
+                                  height: 1),
                             ),
                           ],
-                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -475,11 +765,9 @@ class StudentHomePage extends StatefulWidget {
   @override
   // ignore: library_private_types_in_public_api
   _StudentHomePageState createState() => _StudentHomePageState();
-  
 }
 
 class _StudentHomePageState extends State<StudentHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
