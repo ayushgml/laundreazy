@@ -225,51 +225,162 @@ class ManagerLogin extends StatelessWidget {
   const ManagerLogin({super.key});
 
   @override
+  FocusNode emailInputNode = FocusNode();
+  FocusNode passwordInputNode = FocusNode();
+
+    String? validateEmail(String value) {
+      String pattern =
+        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?)*$";
+      RegExp regex = RegExp(pattern);
+      if (!regex.hasMatch(value) || value == null) {
+        return 'Enter a valid email address';
+      } else {
+        return null;
+      }
+    }
+
+    // ignore: unused_element
+    String? validatePassword(String value) {
+      String pattern = r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
+      RegExp regex = RegExp(pattern);
+      if (!regex.hasMatch(value) || value == null) {
+        return 'Enter a valid password';
+      } else {
+        return null;
+      }
+    } 
+
+    TextEditingController emailId = TextEditingController();
+    TextEditingController password = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
+    void openKeyboard() {
+      FocusScope.of(context).requestFocus(emailInputNode);
+    }
+
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/image/manager_bg.png'),
-            fit: BoxFit.fill,
-          ),
-        ),
-        padding: const EdgeInsets.all(20),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'LAUNDRY/IRON MANAGER',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    color: Color.fromRGBO(0, 0, 0, 1),
-                    fontFamily: 'Reem Kufi Fun',
-                    fontSize: 22,
-                    letterSpacing:
-                        0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.bold,
-                    height: 1),
+        body: Container(
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/image/manager_bg.png'),
+                fit: BoxFit.fill,
               ),
-              Text(
-                'LOGIN',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    color: Color.fromRGBO(0, 0, 0, 1),
-                    fontFamily: 'Reem Kufi Fun',
-                    fontSize: 36,
-                    letterSpacing:
-                        0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.bold,
-                    height: 1),
-              )
-            ]),
-      ),
-    );
+            ),
+            padding: const EdgeInsets.all(20),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    'STUDENT',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromRGBO(0, 0, 0, 1),
+                        fontFamily: 'Reem Kufi Fun',
+                        fontSize: 22,
+                        letterSpacing:
+                            0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.bold,
+                        height: 1),
+                  ),
+                  Text(
+                    'LOGIN',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromRGBO(0, 0, 0, 1),
+                        fontFamily: 'Reem Kufi Fun',
+                        fontSize: 36,
+                        letterSpacing:
+                            0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.bold,
+                        height: 1),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Form(
+                    autovalidateMode: AutovalidateMode.always,
+                    child: TextFormField(
+                      controller: emailId,
+                      validator: (value) => validateEmail(value!),
+                      decoration: InputDecoration(
+                        labelText: "Email ID",
+                        border: OutlineInputBorder(),
+                      ),
+                      // focusNode: emailInputNode,
+                      // autofocus: true,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Form(
+                    autovalidateMode: AutovalidateMode.always,
+                    child: TextFormField(
+                      controller: password,
+                      validator: (value) => validateEmail(value!),
+                      decoration: InputDecoration(
+                        labelText: "Password",
+                        border: OutlineInputBorder(),
+                      ),
+                      // focusNode: passwordInputNode,
+                      // autofocus: true,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ButtonBar(
+                    alignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: 335,
+                        height: 66,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(12),
+                            topRight: Radius.circular(12),
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12),
+                          ),
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        child: GestureDetector(
+                          onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => PendingLaundry())),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: const [
+                              Text(
+                                'LOGIN',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  color: Color.fromRGBO(247, 236, 222, 1),
+                                  fontFamily: 'Reem Kufi Fun',
+                                  fontSize: 19,
+                                  letterSpacing:
+                                      1 /*percentages not used in flutter. defaulting to zero*/,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ]))
+        // ]
+        );
   }
 }
-
 class StudentLogin extends StatelessWidget {
   StudentLogin({super.key});
 
@@ -429,7 +540,36 @@ class StudentLogin extends StatelessWidget {
         );
   }
 }
+class PendingLaundry extends StatelessWidget{
+@override
+Widget build(BuildContext context){
+  return Scaffold(
+    backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+    body: Container(
+      child: Column(
+        children: [
+        Container(
+        width: 369,
+        height: 132,
+        decoration: BoxDecoration(
+          borderRadius : BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(15),
+            bottomLeft: Radius.circular(15),
+            bottomRight: Radius.circular(15),
+          ),
+      color : Color.fromRGBO(247, 236, 223, 1),
+      border : Border.all(
+          color: Color.fromRGBO(84, 186, 185, 1),
+          width: 1,
+        ),
+  ))]
+        ),
+      ),
 
+  )
+}
+}
 // class Drawhorizontalline extends CustomPainter {
 //   Paint _paint;
 //   Drawhorizontalline() {
