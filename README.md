@@ -34,4 +34,12 @@ Laundreazy is a Laundry Managment application developed by our team to make your
 <img float:right src="https://user-images.githubusercontent.com/82299544/193421885-b34ff503-8b2a-42ab-8955-a0ef124b6728.jpg" style="height:200px; width= 100px;">
 </div>
 
-
+## How to run
+First make sure that flutter is installed on your system and do a check using:
+```flutter doctor```
+Then if everything is correct run:
+```
+git clone https://github.com/ayushgml/laundreazy.git
+cd laundreazy
+flutter run
+```
